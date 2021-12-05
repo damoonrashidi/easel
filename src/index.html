@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Easel</title>
+    <style type="text/css">
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #eee;
+      }
+      canvas {
+        border: 32px solid #262626;
+      background: #eee;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+        10px 76px 80px rgba(0, 0, 0, 0.16),
+        0px 34.2165px 37.8605px rgba(0, 0, 0, 0.156182),
+        0px 19.7788px 22.4204px rgba(0, 0, 0, 0.147078),
+        0px 12.0142px 13.7505px rgba(0, 0, 0, 0.127239),
+        0px 6.94312px 7.98618px rgba(0, 0, 0, 0.0753422);
+      }
+    </style>
+    <script type="text/javascript">
+
+      window.addEventListener('hashchange', () => {
+
+        const painting = location.hash.substr(1);
+        // document.body.innerHTML = '';
+        const script = document.createElement('script');
+        script.setAttribute('type', 'module');
+        script.setAttribute('src', `./${painting}/index.js`);
+        document.body.appendChild(script);
+      });
+
+      window.addEventListener('DOMContentLoaded', () => {
+        let painting = location.hash.substr(1);
+        if (painting === '') {
+          window.location.hash = '#example';
+        }
+        const script = document.createElement('script');
+        script.setAttribute('type', 'module');
+        script.setAttribute('src', `./${painting}/${painting}.js`);
+        document.body.appendChild(script);
+      });
+
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
